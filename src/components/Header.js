@@ -1,8 +1,9 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Flogo from "../images/Flogo.jpg";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import Searchbar from "./Searchbar";
 
-function Header() {
+function Header({ query, setQuery }) {
   return (
     <div
       className="
@@ -14,27 +15,30 @@ function Header() {
     pl-5"
     >
       <img src={Flogo} className="h-full" alt="flogo" />
-      <div
-        className="flex 
+      <Link to="/">
+        <div
+          className="flex 
         gap-2 
         m-2 
         px-6
         items-center
         justify-center  hover:bg-neutral-800
-        rounded-md"
-      >
-        <Bars3Icon
-          className="text-neutral-50 
-        w-8"
-        />
-        <p
-          className="text-neutral-50 
-        text-lg"
+        rounded-md
+        cursor:pointer"
         >
-          Menu
-        </p>
-      </div>
-      <Searchbar />
+          <Bars3Icon
+            className="text-neutral-50 
+        w-8"
+          />
+          <p
+            className="text-neutral-50 
+        text-lg"
+          >
+            Main
+          </p>
+        </div>
+      </Link>
+      <Searchbar query={query} setQuery={setQuery} />
     </div>
   );
 }
